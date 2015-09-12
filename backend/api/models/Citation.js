@@ -33,7 +33,7 @@ module.exports = {
     },
     violations: {
       collection: 'violation',
-      via: 'owner'
+      via: 'violationOwner'
     }
   }
 };
