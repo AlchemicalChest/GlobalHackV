@@ -1,0 +1,9 @@
+var tableApp = angular.module('myApp', []);
+
+tableApp.controller('tableController', function($scope, $http) {
+    $http.get("http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/user/1")
+    .success(function (response) {
+    $scope.theLastname = response.lastname;
+    window.alert(response);
+    });
+});
