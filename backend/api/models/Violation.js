@@ -10,39 +10,48 @@ module.exports = {
   schema: true,
 
   attributes: {
-    owner: {
+
+    violationNumber: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+
+    violationDescription: {
+      type: 'text',
+      required: true
+    },
+
+    warrantStatus: {
+      type: 'boolean',
+      required: true
+    },
+
+    warrantNumber: {
+      type: 'string'
+    },
+
+    status: {
+      type: 'string',
+      required: true
+    },
+
+    statusDate: {
+      type: 'date',
+      required: true
+    },
+
+    fineAmount: {
+      type: 'float'
+    },
+
+    courtCost: {
+      type: 'float'
+    },
+    violationOwner: {
       model: 'citation'
     }
-  },
-  violationNumber: {
-    type: 'string',
-    required: true,
-    unique: true
-  },
-  violationDescription: {
-    type: 'text',
-    required: true
-  },
-  warrantStatus: {
-    type: 'boolean',
-    required: true
-  },
-  warrantNumber: {
-    type: 'string'
-  },
-  status: {
-    type: 'string',
-    required: true
-  },
-  statusDate: {
-    type: 'date',
-    required: true
-  },
-  fineAmount: {
-    type: 'float'
-  },
-  courtCost: {
-    type: 'float'
+
   }
 };
 
