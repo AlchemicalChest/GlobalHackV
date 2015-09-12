@@ -15,6 +15,7 @@ var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
   $http.get("http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/user/1")
     .then(function (response) {
+        console.log(response);
       $scope.lastnames = response.lastName;
     },
   function(response) {

@@ -24,7 +24,6 @@ module.exports = {
     },
     drivingLicenseNumber: {
       type: 'string',
-      unique: true
     },
     address: {
       type: 'string',
