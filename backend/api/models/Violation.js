@@ -11,10 +11,6 @@ module.exports = {
 
   attributes: {
 
-    violationOwner: {
-      model: 'citation'
-    },
-
     violationNumber: {
       type: 'string',
       required: true,
@@ -51,6 +47,9 @@ module.exports = {
 
     courtCost: {
       type: 'float'
+    },
+    violationOwner: {
+      model: 'citation'
     }
 
   }
