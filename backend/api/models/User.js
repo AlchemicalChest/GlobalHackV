@@ -42,13 +42,18 @@ module.exports = {
       collection: 'citation',
       via: 'defendant'
     },
+    email: {
+      type: 'email',
+      unique: true
+    },
     encryptedPassword: {
       type: 'string',
     }
   },
 
   beforeCreate: function (values, next) {
-    if (!values.password || values.password != values.confirmation) {
+    if (!values.password) {
+      console.log('Something wrong!');
       return next({err: ['Password doesn\'t match password confirmation.']});
     }
 
