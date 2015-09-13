@@ -42,6 +42,18 @@ module.exports = {
       collection: 'citation',
       via: 'defendant'
     },
+    credit: {
+      type: 'float',
+      defaultsTo: 0
+    },
+    volunteerWorks: {
+      collection: 'communityService',
+      via: 'participant'
+    },
+    supervisedCommunityServices: {
+      collection: 'communityService',
+      via: 'supervisor'
+    },
     email: {
       type: 'email',
       unique: true
