@@ -24,7 +24,6 @@ module.exports = {
     },
     drivingLicenseNumber: {
       type: 'string',
-      unique: true
     },
     address: {
       type: 'string',
@@ -39,10 +38,26 @@ module.exports = {
       type: 'boolean',
       defaultsTo: false
     },
-    citations:{
+    citations: {
       collection: 'citation',
       via: 'defendant'
+    },
+    encryptedPassword: {
+      type: 'string',
     }
+  },
+
+  beforeCreate: function (values, next) {
+    if (!values.password || values.password != values.confirmation) {
+      return next({err: ['Password doesn\'t match password confirmation.']});
+    }
+
+    require('bcrypt').hash(values.password, 10, function passwordEncrypted(err, encryptedPassword) {
+      if (err) return next(err);
+      values.encryptedPassword = encryptedPassword;
+      next();
+    });
   }
+
 };
 
