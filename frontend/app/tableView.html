@@ -114,6 +114,32 @@
 
     </table>
   </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Community Service</div>
+    <table class="table">
+      <tr>
+        <th>Work Description</th>
+        <!--<th>Supervisor</th> -->
+        <th>Credit</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Status</th>
+
+      </tr>
+      <tr ng-repeat="y in vW">
+        <td>
+          {{y.description}}
+        </td>
+        <!-- <td>{{y.supervisor}}</td> -->
+        <td>{{y.credit}}</td>
+        <td>{{y.startedAt}}</td>
+        <td>{{y.endedAt}}</td>
+        <td>{{y.status}}</td>
+      </tr>
+    </table>
+  </div>
 </div> <!-- table closed -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

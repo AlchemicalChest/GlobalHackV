@@ -23,6 +23,7 @@ app.controller('customersCtrl', function($scope, $http) {
       $scope.defendantName = response.data[0].firstName + " " + response.data[0].lastName;
       $scope.citations = response.data[0].citations;
       citationNumber = response.data[0].citations[0].citationNumber;
+        $scope.vW = response.data[0].volunteerWorks;
         //window.alert(JSON.stringify(response));
         //window.alert($scope.citationNum);
     },
@@ -42,6 +43,15 @@ app.controller('customersCtrl', function($scope, $http) {
         $scope.courtLocation = response.data[0].court_location;
         $scope.courtAddress = response.data[0].court_address;
         $scope.courtDate = response.data[0].court_date;
+
+
+        $scope.communityServiceNumber = response.data[0].communityServiceNumber;
+        $scope.description = response.data[0].description;
+        $scope.supervisorID = response.data[0].supervisor;
+        $scope.credit = response.data[0].credit;
+        $scope.startedAt = response.data[0].startedAt;
+        $scope.endedAt = response.data[0].endedAt;
+        $scope.status = response.data[0].status;
 
         //var total = 0;
         //for (var i in response.data[0].violations) {
