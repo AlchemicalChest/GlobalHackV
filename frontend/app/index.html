@@ -110,7 +110,20 @@ maximumAge: 80,
      
       
     });
-  
+
+    function writeCookie(name,value,days) {
+        var date, expires;
+        if (days) {
+            date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            expires = "; expires=" + date.toGMTString();
+        }else{
+            expires = "";
+        }
+        // alert(name + "=" + value + ";expires=" +expires + "; path=/");
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
   
   
   function sendData()
@@ -124,6 +137,9 @@ maximumAge: 80,
     var address_1 = document.getElementById("address_1").value;
     var address_2 = document.getElementById("address_2").value;
     var address5 = address_1 + " " + address_2;
+
+      writeCookie("firstName", first_name, 1);
+      writeCookie("lastName", last_name, 1);
    
     //alert("test: " + address5); 
     $.post("http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/session/create/",
@@ -176,7 +192,7 @@ maximumAge: 80,
 </nav> -->
   
  <div class="img_container">
-   <img src="final_logo.png" style="height: 90px; width: 230px; padding-left: 40px;" alt="HTML5 Icon">
+   <img src="components/logo-text.png" style="height: 90px; width: 230px; padding-left: 40px;" alt="HTML5 Icon">
    </div> 
 
 <p class="style2">Municipal Courts of St. Louis, MO</p>

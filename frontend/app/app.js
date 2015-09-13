@@ -13,19 +13,27 @@ config(['$routeProvider', function($routeProvider) {
 
 var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
-  $http.get("http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/user/1")
+  //var request1 = "http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/user/" + userID;
+  var request = "http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/user?firstName="+usrFirstName +"&lastName=" + usrLastName;
+
+  var citationNumber;
+  $http.get(request)
     .then(function (response) {
       //window.alert(response);
-      $scope.defendantName = response.data.firstName + " " + response.data.lastName;
-      $scope.citations = response.data.citations;
+      $scope.defendantName = response.data[0].firstName + " " + response.data[0].lastName;
+      $scope.citations = response.data[0].citations;
+      citationNumber = response.data[0].citations[0].citationNumber;
         //window.alert(JSON.stringify(response));
+        //window.alert($scope.citationNum);
     },
   function(response) {
     //window.alert(JSON.stringify(response));
     //$scope.lastnames = "N/A";
   });
+  //window.alert("1: " + $scope.citationNum);
+  var request2 = "http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/citation?citationNumber=" + 137757292;
 
-  $http.get("http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/citation?citationNumber=137757292")
+  $http.get(request2)
       .then(function (response) {
         //window.alert(JSON.stringify(response));
         $scope.violations = response.data[0].violations;

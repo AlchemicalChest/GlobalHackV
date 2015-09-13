@@ -39,6 +39,28 @@
 
   </style>
 
+  <script type="text/javascript">
+    function readCookie(name) {
+      var i, c, ca, nameEQ = name + "=";
+      ca = document.cookie.split(';');
+      for(i=0;i < ca.length;i++) {
+        c = ca[i];
+        // alert(i);
+        while (c.charAt(0)==' ') {
+          c = c.substring(1,c.length);
+        }
+        if (c.indexOf(nameEQ) == 0) {
+          return c.substring(nameEQ.length,c.length);
+          // alert("in the substring");
+        }
+      }
+      return '';
+    }
+    var usrFirstName = readCookie("firstName");
+    var usrLastName = readCookie("lastName");
+
+  </script>
+
 </head>
 <body>
 
@@ -53,9 +75,10 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Sunny</a></li>
-          <li><a href="#">Whatever</a></li>
+          <li class="active"><a href="./tableView.html">Home</a></li>
+          <li><a href="#">Contact Court</a></li>
+          <li><a href="index.html">Logout</a></li>
+
         </ul>
 
       </div><!--/.nav-collapse -->
@@ -156,7 +179,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Pay now</button>
+        <a href="./pay.html"><button type="button" class="btn btn-primary">Pay now</button></a>
       </div>
     </div>
   </div>
