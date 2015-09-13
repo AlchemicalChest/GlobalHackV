@@ -23,6 +23,12 @@ module.exports = {
     credit: {
       type: 'float'
     },
+    address: {
+      type: 'string'
+    },
+    duration: {
+      type: 'int'
+    },
     startedAt: {
       type: 'datetime'
     },

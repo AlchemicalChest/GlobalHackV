@@ -49,6 +49,8 @@ app.controller('customersCtrl', function($scope, $http) {
         $scope.description = response.data[0].description;
         $scope.supervisorID = response.data[0].supervisor;
         $scope.credit = response.data[0].credit;
+        $scope.address = response.date[0].address;
+        $scope.duration = response.date[0].duration;
         $scope.startedAt = response.data[0].startedAt;
         $scope.endedAt = response.data[0].endedAt;
         $scope.status = response.data[0].status;
