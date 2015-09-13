@@ -20,18 +20,38 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <!--jQuery Css-->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <style>
+    ​
+    .modal-body
+    {
+      padding:4px;
+    }
+    .fine
+    {
+      margin-right:2%;
+
+    }
+    #total
+    {
+      margin-left:2%;
+
+    }
+  </style>
+
 </head>
 <body>
 
 <div class="container"  ng-app="app" ng-controller="customersCtrl">
   <!-- Static navbar -->
 
+
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">Skejul</a>
       </div>
-      <div id="navbar" class="navbar-collapse">
+      <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Sunny</a></li>
@@ -59,33 +79,80 @@
       <tr>
         <td>
           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
-            682690971</button>
+            f{{citationNumber}}</button>
 
         </td>
-        <td>{{ lastnames }}</td>
-        <td>CONT FOR PAYMENT</td>
-        <td>$163,54</td>
+        <td>{{openStatus}}</td>
+        <td>{{courtDate | date}}</td>
+        <td>{{price | currency}}</td>
       </tr>
 
     </table>
   </div>
 </div> <!-- table closed -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-app="app" ng-controller="detailViewCtrl">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Citation #</h4>
       </div>
       <div class="modal-body">
-        <p></p>
+        <div class="contact-info">
+          <!-- Table -->
+          <table class="table">
+            <tr>
+              <td>Name: {{defendant.firstName + " " + defendant.lastName}}</td>
+            </tr>
+            <tr>
+              <td>Date Issued: {{citationDate}}</td>
+            </tr>
+            <tr>
+              <td>Court in charge: {{courtLocation}} </td>
+            </tr>
+            <tr>
+              <td>Address: {{courtAddress}} </td>
+            </tr>
+            <tr>
+              <td>Phone: {{"N/A"}}</td>
+            </tr>
+            ​
+          </table>
+
+        </div>
+
+        <div class="violation-info">
+          <!-- Table -->
+          <table class="table">
+            <tr>
+              <th>Violation</th>
+              <th><p class="pull-right fine" >Costs</p></th>
+            </tr>
+            <tr ng-repeat="x in violations">
+              <td>{{x.violationDescription}} ({{x.violationNumber}})</td>
+              <td><p class="pull-right fine">{{x.fineAmount | currency}}</p>
+                <input type="checkbox" name="pay-fine" value="pay-now">
+              </td>
+            </tr>
+          </table>
+          <br>
+          <hr>
+          <b id="total">Total:</b>
+          <b class="pull-right fine">$105</b>
+
+
+        </div>
+        ​
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Pay now</button>
       </div>
     </div>
   </div>
