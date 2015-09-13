@@ -66,7 +66,7 @@
   <!-- Table -->
   <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Bohao Zhang</div>
+    <div class="panel-heading">{{defendantName}}</div>
 
     <!-- Table -->
     <table class="table">
@@ -76,15 +76,15 @@
         <th>Date</th>
         <th>Costs</th>
       </tr>
-      <tr>
+      <tr ng-repeat="x in citations">
         <td>
           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
-            f{{citationNumber}}</button>
+            {{x.citationNumber}}</button>
 
         </td>
-        <td>{{openStatus}}</td>
-        <td>{{courtDate | date}}</td>
-        <td>{{price | currency}}</td>
+        <td>{{"Open"}}</td>
+        <td>{{x.court_date | date}}</td>
+        <td>{{getTotal() | currency}}</td>
       </tr>
 
     </table>
@@ -108,7 +108,7 @@
           <!-- Table -->
           <table class="table">
             <tr>
-              <td>Name: {{defendant.firstName + " " + defendant.lastName}}</td>
+              <td>Name: Welcome, {{defendant.firstName + " " + defendant.lastName}}</td>
             </tr>
             <tr>
               <td>Date Issued: {{citationDate}}</td>
@@ -120,7 +120,7 @@
               <td>Address: {{courtAddress}} </td>
             </tr>
             <tr>
-              <td>Phone: {{"N/A"}}</td>
+              <td>Phone: {{"314-825-0471"}}</td>
             </tr>
             ​
           </table>
@@ -136,7 +136,7 @@
             </tr>
             <tr ng-repeat="x in violations">
               <td>{{x.violationDescription}} ({{x.violationNumber}})</td>
-              <td><p class="pull-right fine">{{x.fineAmount | currency}}</p>
+              <td><p class="pull-right fine" ng-model="fineTotal">{{x.fineAmount | currency}}</p>
                 <input type="checkbox" name="pay-fine" value="pay-now">
               </td>
             </tr>
@@ -144,7 +144,7 @@
           <br>
           <hr>
           <b id="total">Total:</b>
-          <b class="pull-right fine">$105</b>
+          <b class="pull-right fine">{{getTotal()}}</b>
 
 
         </div>
