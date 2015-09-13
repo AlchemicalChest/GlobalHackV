@@ -12,19 +12,21 @@ module.exports = {
             User.findOne({email: req.param('email')}, function userFound(err, user) {
                 if (err) next(err);
                 if (user) {
-                    console.log('get that');
                     require("bcrypt").compare(req.param('password'), user.encryptedPassword, function compareFinished(err, valid) {
                         if (err) next(err);
                         if (valid) {
                             req.session.authenticated = true;
                             req.session.user = user;
+                            console.log('LogIn Successful Hello ' + user.firstName + '.');
                             return res.ok();
                         }
                     });
                 }
             });
+        } else {
+            console.log('LogIn Failed');
+            return res.forbidden();
         }
-        return res.forbidden();
     },
 
     'destroy': function(req, res, next) {
