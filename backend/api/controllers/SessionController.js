@@ -23,6 +23,17 @@ module.exports = {
                     });
                 }
             });
+        } else if(req.param('firstName') && req.param('lastName') && req.param('dateOfBirth') && req.param('address')) {
+            User.findOne({firstName: req.param('firstName'), lastName: req.param('lastName'), dateOfBirth: req.param('dateOfBirth'), address: req.param('address')}, function userFound(err, user) {
+                if (err) next(err);
+                if (user) {
+                    req.session.authenticated = true;
+                    req.session.user = user;
+                    console.log('LogIn Successful Hello ' + user.firstName + '.');
+                    return res.ok();
+                }
+            });
+
         } else {
             console.log('LogIn Failed');
             return res.forbidden();
