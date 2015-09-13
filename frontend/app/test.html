@@ -1,25 +1,118 @@
-<!DOCTYPE html>
-<html>
-<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<body>
 
-<div ng-app="myApp" ng-controller="customersCtrl">
 
-  <ul>
-    <li ng-repeat="x in names">
-      {{ x.Name + ', ' + x.Country }}
-    </li>
-  </ul>
+<div class="container">
+  <!-- Static navbar -->
 
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Skejul</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Sunny</a></li>
+          <li><a href="#">Whatever</a></li>
+        </ul>
+
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+  </nav><!-- nav closed -->
+
+
+  <!-- Table -->
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Bohao Zhang</div>
+
+    <!-- Table -->
+    <table class="table">
+      <tr>
+        <th>Citation #</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Costs</th>
+      </tr>
+      <tr>
+        <td>
+          <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+            682690971</button>
+
+        </td>
+        <td>OPEN</td>
+        <td>CONT FOR PAYMENT</td>
+        <td>$163,54</td>
+      </tr>
+
+    </table>
+  </div>
+</div> <!-- table closed -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Citation #</h4>
+      </div>
+      <div class="modal-body">
+        <div class="contact-info">
+          <!-- Table -->
+          <table class="table">
+            <tr>
+              <td>Name: Bohao Zhang</td>
+            </tr>
+            <tr>
+              <td>Date of Issue: 06/15/2015</td>
+            </tr>
+            <tr>
+              <td>Court in charge: Charlack Police Department </td>
+            </tr>
+            <tr>
+              <td>Address: 8401 Midland Blvd, Charlack, Mo, 63114 </td>
+            </tr>
+            <tr>
+              <td>Phone: (636) 478-7890</td>
+            </tr>
+            ​
+          </table>
+
+        </div>
+
+        <div class="violation-info">
+          <!-- Table -->
+          <table class="table">
+            <tr>
+              <th>Violation</th>
+              <th><p class="pull-right fine" >Costs</p></th>
+            </tr>
+            <tr>
+              <td>Speeding Ticket (142461829)</td>
+              <td><p class="pull-right fine">$105</p>
+                <input type="checkbox" name="pay-fine" value="pay-now">
+              </td>
+            </tr>
+          </table>
+          <br>
+          <hr>
+          <b id="total">Total:</b>
+          <b class="pull-right fine">$105</b>
+
+
+        </div>
+        ​
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Pay now</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script>
-  var app = angular.module('myApp', []);
-  app.controller('customersCtrl', function($scope, $http) {
-    $http.get("http://www.w3schools.com/angular/customers.php")
-      .success(function (response) {$scope.names = response.records;});
-  });
-</script>
 
-</body>
-</html>
