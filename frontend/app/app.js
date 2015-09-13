@@ -24,6 +24,39 @@ app.controller('customersCtrl', function($scope, $http) {
     //window.alert(JSON.stringify(response));
     //$scope.lastnames = "N/A";
   });
+
+  $http.get("http://ec2-52-3-113-7.compute-1.amazonaws.com:1337/citation?citationNumber=137757292")
+      .then(function (response) {
+        //window.alert(JSON.stringify(response));
+        $scope.violations = response.data[0].violations;
+        $scope.defendant = response.data[0].defendant;
+        $scope.citationDate = response.data[0].citationDate;
+        $scope.courtLocation = response.data[0].court_location;
+        $scope.courtAddress = response.data[0].court_address;
+        $scope.courtDate = response.data[0].court_date;
+
+        //var total = 0;
+        //for (var i in response.data[0].violations) {
+        //  total = total + parseInt(i.fineAmount);
+        //  window.alert(total);
+        //}
+        //$scope.fineTotal = total;
+        $scope.getTotal = function(){
+          var total = 0;
+          for(var i = 0; i < $scope.violations.length; i++){
+            var product = $scope.violations[i].fineAmount;
+            total += product;
+          }
+          return total;
+        }
+
+        //window.alert(response);
+        //$scope.lastnames = response.lastName;
+      },
+      function(response) {
+        //window.alert(JSON.stringify(response));
+        //$scope.lastnames = "N/A";
+      });
 });
 
 app.controller('detailViewCtrl', function($scope, $http) {
