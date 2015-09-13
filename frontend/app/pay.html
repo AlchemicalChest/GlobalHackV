@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<head>
+
+	<style>
+		body
+		{
+			background-color:#023551 !important;
+		}
+		.subtotal
+		{
+			margin-left:20%;
+		}
+		.table-wrapper
+		{
+			margin-top:5%;
+			width:50%;
+			margin-left:25%;
+		}
+		.fines
+		{
+			margin-left:10%;
+		}
+		​
+		.wrapper
+		{
+			width:70%;
+
+			margin-left:15%;
+			height:100%;
+		}
+		.total
+		{
+			margin-left:30%;
+
+
+		}
+		.total-val
+		{
+			padding-left:10%;
+
+		}
+		​
+		.paymeth-wrapper
+		{
+
+			width:80%;
+			margin-left:10%;
+			height:100%;
+		}
+		.choose-pay p
+		{
+			display:inline;
+			padding-left:10px;
+			padding-right:10px;
+		}
+		.choose-pay
+		{
+			margin-top:40px;
+			margin-left:200px;
+			margin-bottom:20px;
+
+		}
+		#credit-card
+		{
+			margin-top:40px;
+			margin-left:200px;
+			margin-bottom:0px;
+
+		}
+		​
+		.card-type
+		{
+			margin-left:15.4%;
+			width:28%;
+
+		}
+		.card-number
+		{
+			margin-left:4%;
+		}
+		.card-csc
+		{
+			width:10%;
+		}
+		.billing-info input
+		{
+			display:block;
+
+		}
+		.billing-info select
+		{
+			display:block;
+
+		}
+		​
+		.billing-info
+		{
+			margin-bottom:50px;
+		}
+		.btn
+		{
+			margin-left:0px;
+			margin-bottom:40px;
+
+		}
+		#check
+		{
+			margin-top:40px;
+			margin-left:200px;
+			margin-bottom:60px;
+
+		}
+	</style>
+
+<title>PAYMENT</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">	
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<!--jQuery Css-->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- Custom CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ <script src="dobPicker.min.js"></script>
+<script>
+	
+	$(document).ready(function() {
+    $("input[name$='payment-method']").click(function() {
+        var test = $(this).val();
+
+        $("div.desc").hide();
+        $("#" + test).show();
+    });
+});
+	</script>
+</head>
+<body>
+<nav class="navbar navbar-default" style="height: 120px; background-color: #023551">
+	<div class="container-fluid" style="height: 120px; background-color: #023551; align-content: flex-end">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#"><img src="components/logo-text.png" alt="Home" style="width:130px;"></a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="./tableView.html">Home</a></li>
+				<li><a href="#">Contact Court</a></li>
+				<li><a href="index.html">Logout</a></li>
+
+			</ul>
+
+		</div><!--/.nav-collapse -->
+	</div><!--/.container-fluid -->
+</nav><!-- nav closed -->
+	<div class="wrapper">
+		<div class="table-wrapper">
+			<!-- PAYMENT SUMMARY-->
+			
+	      <!-- Table -->
+		  <div class="panel panel-primary">
+			  <!-- Default panel contents -->
+			  <div class="panel-heading">Payment Summary</div>
+				<div class="payment-sum">
+				<table class="table">
+					<tr>
+						<th><b class="fines">VIOLATIONS</b></th>
+						<th><b class="subtotal">SUBTOTAL</b></th>
+					</tr>
+					<tr>
+						<td><b class="fines">Speeding Ticket (1712477123)</b></td>	
+						<td><b class="subtotal">$105</b></td>	
+					</tr>
+				</table>
+				<hr>
+				<h2 class="total">Total Fine: <b class="total-val">$105</b></h2>
+					
+				</div>
+			</div>
+		</div><!--table div closed-->
+		
+		<div class="paymeth-wrapper">
+			<div class="panel panel-primary">
+			  <!-- Default panel contents -->
+			  <div class="panel-heading">Payment Method</div>
+			  <div class="choose-pay">
+			 	<input type="radio" name="payment-method" checked="checked" value="credit-card"><p>Credit Card</p>
+			 	<input type="radio" name="payment-method" value="check"><p>Check</p>
+			 	
+			  </div>
+			  
+			  <!-- credit card -->
+			  <div id="credit-card" class="desc">
+				 <h3>Credit Card</h3>
+			  	  <hr>
+				  <label for="card-type" >Card*: </label>	
+				  <select class="card-type" name="card-type" id="card-type">
+				  	<option selected="selected">Select Card Type</option>
+				  	<option>MasterCard</option>
+				  	<option>Visa</option>
+				  	<option>American Express</option>
+				  </select>
+				  <br>
+				  <label for="card-number" >Card Number*: </label>	
+				  <input class="card-number" type="text" name="card-number" id="card-number">
+				  <br>
+				  <label for="card-exp-m">Experation Date*: </label>	
+				  <select class="card-exp-m" name="card-exp-m" id="card-exp-m">
+				  <option>Select day</option>
+				  </select>	
+				  <select class="card-exp-d" name="card-exp-d" id="card-exp-d">
+				  <option>Select year</option>
+				  </select>
+				  <label for="card-csc">CSC*</label>
+				  <input class="card-csc" type="text" name="CSC" id="CSC">
+				  <br>
+				  <!-- Billing Info -->
+				  <div class="billing-info">
+				  <h3>Billing Info</h3>
+				  <hr/>
+				  <label for="card-number" >Address*: </label>	
+				  <input class="address" type="text" name="address" id="address">
+				  <label for="address" >Address: </label>	
+				  <input class="address" type="address2" name="address" id="address">
+				  <label for="card-number" >City*: </label>	
+				  <input class="city" type="text" name="city" id="city">
+				  <label for="state" >State: </label>	
+				  <select class="state" name="state" id="state">
+				  <option>Select State</option>
+				  </select>
+				  </div>
+				  <button class="btn btn-primary">Pay Now</button>
+			  </div>
+			  
+			  
+			  <!-- Check -->
+			  <div id="check" class="desc" style="display:none;">
+			  <h3>Check by Mail</h3>
+			  <hr>
+			  <p>To pay your ticket by mail</p>
+			  <ul>
+			  	<li>Conplete and sign your ticket</li>
+			  	<li>Enclose the check for the full ticket amount, do <strong><u>NOT SEND CASH!</u></strong></li>
+			  	<li>Be sure to write in your citation number</li>
+			  	<li>Mail your citation and payment to:</li>
+			  </ul>
+			  <h2>Court in Charge</h2>
+			  <h2>P.O Box 104540</h2>
+			  <h2>Jefferson City, MO 65110</h2>
+			  </div>
+			  
+			  
+			</div>
+		</div>
+	</div>
+	
+
+
+	<!-- PAYMENT METHOD -->
+
+	
+	
+</body>
+
+
+
+</html>
