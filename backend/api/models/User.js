@@ -38,7 +38,7 @@ module.exports = {
       type: 'boolean',
       defaultsTo: false
     },
-    citations:{
+    citations: {
       collection: 'citation',
       via: 'defendant'
     }
