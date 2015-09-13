@@ -42,6 +42,10 @@ module.exports = {
       collection: 'citation',
       via: 'defendant'
     },
+    credit: {
+      type: 'float',
+      defaultsTo: 0
+    },
     volunteerWorks: {
       collection: 'communityService',
       via: 'participant'
