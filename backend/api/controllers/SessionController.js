@@ -18,22 +18,18 @@ module.exports = {
                         if (valid) {
                             req.session.authenticated = true;
                             req.session.user = user;
-                            console.log('Successful');
-                            res.ok();
+                            return res.ok();
                         }
                     });
-                } else {
-                    console.log('No user was found');
                 }
             });
         }
-        console.log('Failed');
-        res.forbidden();
+        return res.forbidden();
     },
 
     'destroy': function(req, res, next) {
         req.session.destroy();
-        res.ok();
+        return res.ok();
     }
 	
 };
